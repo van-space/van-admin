@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <title>Van Space Admin Rs</title>
+    <script>
+      window.injectData = {}
+      window.version = 'N/A'
+      window.pageSource = 'self'
+    </script>
+    <%= ENV_INJECT %>
+    <%= MX_SPACE_ADMIN_DASHBOARD_VERSION_INJECT %>
+    <!-- injectable script -->
+  </head>
+  <body>
+    <div id="<%= mountId %>"></div>
+    <noscript>
+      <strong
+        >We're sorry but MX Space Admin Vue 3 doesn't work properly without
+        JavaScript enabled. Please enable it to continue.</strong
+      >
+      <strong>
+        It may be a network problem that caused the failure to load the JS file.
+      </strong>
+    </noscript>
+  </body>
+</html>

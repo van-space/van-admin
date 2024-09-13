@@ -1,13 +1,11 @@
-# Local
-.DS_Store
-*.local
-*.log*
-
-# Dist
 node_modules
-dist/
+.DS_Store
+dist
+dist-ssr
+*.local
+bundle-analyze
+stats.html
+.env.development
 
-# IDE
-.vscode/*
-!.vscode/extensions.json
-.idea
+/src/views/dev
+g.d.ts
