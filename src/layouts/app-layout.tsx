@@ -4,7 +4,7 @@ export const AppLayout = () => {
   const { message } = useLoaderData() as { message: string }
   return (
     <div>
-      <h1>AppLayout</h1>
+      <h1 className="text-blue-500">AppLayout</h1>
       <h2>{message}</h2>
       {<Outlet />}
     </div>

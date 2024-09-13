@@ -13,6 +13,9 @@ export default defineConfig({
   output: {
     // assetPrefix: '.',
   },
+  source: {
+    alias: {},
+  },
   html: {
     template: 'public/index.html',
     templateParameters: {
