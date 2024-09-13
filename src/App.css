@@ -1,11 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap');
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+html,
 body {
   margin: 0;
-  color: #fff;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(to bottom, #020917, #101725);
+  font-size: 14px !important;
+  padding: 0;
+  --sans-font: 'Segoe UI', 'Helvetica Neue', sans-serif, -apple-system,
+    system-ui;
+  font-family: var(--sans-font);
+  @apply dark:bg-gray-900;
+}
+body {
+  min-height: 100vh;
+
+  @apply overflow-hidden;
+}
+
+body a {
+  @apply text-primary-default transition-colors;
+  text-decoration: none;
+}
+
+body a:hover {
+  @apply text-primary-shallow;
+}
+
+button:focus,
+button {
+  outline: unset;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-shallow;
+
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--light-bg);
 }
 
 .content {
