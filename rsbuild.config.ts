@@ -36,7 +36,7 @@ export default defineConfig({
             /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
           ],
           dts: './src/auto-import.d.ts',
-          imports: ['react', 'react-router'],
+          imports: ['react'],
         }),
       )
       if (process.env.RSDOCTOR) {

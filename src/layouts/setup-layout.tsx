@@ -2,12 +2,13 @@ import { Outlet } from 'react-router-dom'
 
 import BaseLayout from './base-layout'
 
-const AppLayout = () => {
+const SetupLayout = () => {
   return (
     <BaseLayout>
-      <h1>This is AppLayout</h1>
+      <h1>This is SetupLayout</h1>
       <Outlet />
     </BaseLayout>
   )
 }
-export default AppLayout
+
+export default SetupLayout
