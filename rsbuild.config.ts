@@ -1,5 +1,4 @@
 import { pluginReact } from '@rsbuild/plugin-react'
-import AutoImport from 'unplugin-auto-import/rspack'
 
 import { defineConfig, loadEnv } from '@rsbuild/core'
 import { pluginBasicSsl } from '@rsbuild/plugin-basic-ssl'
@@ -7,7 +6,7 @@ import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 
 import PKG from './package.json'
 
-const { parsed } = loadEnv()
+const { parsed, publicVars } = loadEnv()
 const isDev = process.env.NODE_ENV === 'development'
 export default defineConfig({
   output: {
@@ -15,6 +14,7 @@ export default defineConfig({
   },
   source: {
     alias: {},
+    define: publicVars,
   },
   html: {
     template: 'public/index.html',
@@ -30,15 +30,6 @@ export default defineConfig({
   plugins: [pluginReact(), pluginBasicSsl()],
   tools: {
     rspack(_, { appendPlugins }) {
-      appendPlugins(
-        AutoImport({
-          include: [
-            /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-          ],
-          dts: './src/auto-import.d.ts',
-          imports: ['react'],
-        }),
-      )
       if (process.env.RSDOCTOR) {
         appendPlugins(
           new RsdoctorRspackPlugin({
