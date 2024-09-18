@@ -3,6 +3,7 @@ import type { UserModel } from '~/models/user'
 import type { LoaderFunctionArgs } from 'react-router-dom'
 
 import { SESSION_WITH_LOGIN } from '~/constants/keys'
+import { setToken } from '~/utils/auth'
 import { RESTManager } from '~/utils/rest'
 
 export async function loginAction({ request }: LoaderFunctionArgs) {
@@ -29,6 +30,7 @@ export async function loginAction({ request }: LoaderFunctionArgs) {
     })
     if (res.token) {
       sessionStorage.setItem(SESSION_WITH_LOGIN, '1')
+      setToken(res.token)
     }
   } catch (_error) {
     // Unused as of now but this is how you would handle invalid

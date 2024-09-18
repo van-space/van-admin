@@ -28,7 +28,9 @@ export default defineConfig({
     },
   },
   plugins: [pluginReact(), pluginBasicSsl()],
+
   server: {
+    port: 10086,
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:2333',
