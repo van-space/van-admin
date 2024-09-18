@@ -28,6 +28,17 @@ export default defineConfig({
     },
   },
   plugins: [pluginReact(), pluginBasicSsl()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:2333',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '',
+        },
+      },
+    },
+  },
   tools: {
     rspack(_, { appendPlugins }) {
       if (process.env.RSDOCTOR) {

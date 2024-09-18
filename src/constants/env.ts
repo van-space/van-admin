@@ -33,3 +33,5 @@ function transformUrl(url: string) {
 
   return url.endsWith('/') ? url.slice(0, -1) : url
 }
+
+export const isDev = import.meta.env.MODE === 'development'

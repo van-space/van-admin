@@ -20,13 +20,22 @@ const LoginPage = () => {
       <p>You must log in to view the page at {from}</p>
 
       <Form method="post" replace>
-        <input type="hidden" name="redirectTo" value={from} />
-        <label>
-          Username: <input name="username" />
-        </label>{' '}
-        <button type="submit" disabled={isLoggingIn}>
-          {isLoggingIn ? 'Logging in...' : 'Login'}
-        </button>
+        <div>
+          <input type="hidden" name="redirectTo" value={from} />
+          <label>
+            Username: <input name="username" />
+          </label>{' '}
+        </div>
+        <div>
+          <label>
+            Password: <input type="password" name="password" />
+          </label>{' '}
+        </div>
+        <div>
+          <button type="submit" disabled={isLoggingIn}>
+            {isLoggingIn ? 'Logging in...' : 'Login'}
+          </button>
+        </div>
         {actionData && actionData.error ? (
           <p style={{ color: 'red' }}>{actionData.error}</p>
         ) : null}

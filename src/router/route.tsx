@@ -8,8 +8,7 @@ import Dashboard from '~/pages/dashboard'
 import LoginPage from '~/pages/login'
 
 import { loginAction } from './action'
-import { fakeAuthProvider } from './auth'
-import { loginLoader, protectedLoader } from './loader'
+import { baseLoader, protectedLoader } from './loader'
 import { RouteName } from './name'
 
 const title = configs.title
@@ -43,7 +42,7 @@ export const routes: RouteObject[] = [
         path: 'login',
         id: RouteName.Login,
         action: loginAction,
-        loader: loginLoader,
+        loader: baseLoader, // or use buildLoader([loginLoader])
         Component: LoginPage,
         handle: {
           title: () => getPageTitle('登录'),
@@ -54,6 +53,7 @@ export const routes: RouteObject[] = [
         handle: {
           title: () => getPageTitle('初始化'),
         },
+        loader: baseLoader,
         async lazy() {
           const Setup = await import('~/pages/setup')
           return {
@@ -66,6 +66,7 @@ export const routes: RouteObject[] = [
         handle: {
           title: () => getPageTitle('初始化'),
         },
+        loader: baseLoader,
         async lazy() {
           const SetupApi = await import('~/pages/setup-api')
           return {
@@ -79,7 +80,6 @@ export const routes: RouteObject[] = [
     path: '/logout',
     async action() {
       // We signout in a "resource route" that we can hit from a fetcher.Form
-      await fakeAuthProvider.signout()
       return redirect('/')
     },
   },
