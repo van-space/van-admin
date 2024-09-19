@@ -21,14 +21,11 @@ class RESTManagerStatic {
   }
 
   constructor() {
-    console.log(this.endpoint)
-
     this._$$instance = extend({
       prefix: this.endpoint,
       timeout: 10000,
       credentials: 'include',
       errorHandler: async (error) => {
-        console.log('🚀 ~ RESTManagerStatic ~ errorHandler: ~ error:', error)
         const Message = window.message
         if (error.request && !error.response) {
           Message.error('网络错误')
@@ -76,7 +73,7 @@ class RESTManagerStatic {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
+// biome-ignore lint: reason - unused
 const noop = () => {}
 const methods = ['get', 'post', 'delete', 'patch', 'put']
 const reflectors = [
@@ -97,7 +94,7 @@ declare module 'umi-request' {
 function buildRoute(manager: RESTManagerStatic): IRequestHandler {
   const route = ['']
   const handler: any = {
-    get(target: any, name: Method) {
+    get(_target: any, name: Method) {
       if (reflectors.includes(name)) return () => route.join('/')
       if (methods.includes(name)) {
         // @ts-ignore
@@ -134,7 +131,7 @@ function buildRoute(manager: RESTManagerStatic): IRequestHandler {
       return new Proxy(noop, handler)
     },
     // @ts-ignore
-    apply(target: any, _, args) {
+    apply(_target: any, _, args) {
       route.push(...args.filter((x: string) => x != null)) // eslint-disable-line eqeqeq
       return new Proxy(noop, handler)
     },

@@ -1,9 +1,8 @@
-import { QueryClient, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { Outlet } from 'react-router-dom'
 
 import BaseLayout from './base-layout'
 
-const queryClient = new QueryClient()
 const SetupLayout = () => {
   return (
     <BaseLayout>

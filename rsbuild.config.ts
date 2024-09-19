@@ -1,7 +1,6 @@
 import { pluginReact } from '@rsbuild/plugin-react'
 
 import { defineConfig, loadEnv } from '@rsbuild/core'
-import { pluginBasicSsl } from '@rsbuild/plugin-basic-ssl'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 
 import PKG from './package.json'
@@ -27,7 +26,7 @@ export default defineConfig({
       }'}</script>`,
     },
   },
-  plugins: [pluginReact(), pluginBasicSsl()],
+  plugins: [pluginReact()],
 
   server: {
     port: 10086,

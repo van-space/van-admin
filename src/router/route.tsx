@@ -3,7 +3,7 @@ import type { RouteObject } from 'react-router-dom'
 
 import { configs } from '~/config'
 import AppLayout from '~/layouts/app-layout'
-import SetupLayout from '~/layouts/setup-layout'
+import SetupLayout from '~/layouts/setup-view'
 import Dashboard from '~/pages/dashboard'
 import LoginPage from '~/pages/login'
 

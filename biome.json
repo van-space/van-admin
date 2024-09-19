@@ -21,7 +21,8 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "noBlankTarget": "warn"
+        "noBlankTarget": "warn",
+        "noSvgWithoutTitle": "off"
       },
       "complexity": {
         "noBannedTypes": "off",

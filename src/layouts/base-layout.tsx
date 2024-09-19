@@ -22,11 +22,6 @@ const BaseLayout = ({ children }) => {
       progress.finish()
     }
   }, [navigation.state])
-  return (
-    <>
-      <h1>This is BaseLayout</h1>
-      {children}
-    </>
-  )
+  return children
 }
 export default BaseLayout
