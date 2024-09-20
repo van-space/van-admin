@@ -69,7 +69,7 @@
     "umi-request": "^1.4.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.0",
+    "@biomejs/biome": "^1.9.2",
     "@innei/prettier": "^0.14.2",
     "@rsbuild/core": "^1.0.1",
     "@rsbuild/plugin-basic-ssl": "^1.1.1",
