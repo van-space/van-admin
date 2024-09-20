@@ -61,7 +61,8 @@
         "useHookAtTopLevel": "error",
         "useIsNan": "error",
         "useValidForDirection": "error",
-        "useYield": "error"
+        "useYield": "error",
+        "useExhaustiveDependencies": "warn"
       },
       "security": {
         "noDangerouslySetInnerHtml": "warn"

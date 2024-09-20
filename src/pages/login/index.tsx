@@ -21,26 +21,25 @@ import { RESTManager } from '~/utils/rest'
 import styles from './index.module.css'
 
 const LoginPage = () => {
-  console.log('渲染')
   const [loading, setLoading] = useState(false)
-  const location = useLocation()
-  const params = new URLSearchParams(location.search)
-  const from = params.get('from') || '/'
+
   const user = useSelector((state) => state.user.user)
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const location = useLocation()
+  const from = new URLSearchParams(location.search).get('from') || '/'
   useEffect(() => {
     const initialize = async () => {
       const isInit = await checkIsInit()
       if (!isInit) {
-        navigate('/setup') // 跳转到 setup 页面
+        navigate('/setup')
         return
       }
       dispatch(fetchUser() as any)
     }
     initialize()
-  }, [dispatch, navigate])
-
+  }, [navigate, dispatch])
   const postSuccessfulLogin = useCallback(
     (token?: string) => {
       dispatch(userSlice.actions.updateToken({ token }))
@@ -82,22 +81,20 @@ const LoginPage = () => {
   }, [passkeyAuth, settings])
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleLogin = async (e: any) => {
-    const psw = inputRef.current?.value
-    if (!psw) {
-      toast.error('密码不能为空')
-      return
-    }
-    setLoading(true)
-    e.stopPropagation()
-    e.preventDefault()
-    try {
-      if (!user || !user.username) {
-        toast.error('主人信息无法获取')
-        return
+  const handleLogin = useCallback(
+    async (e: any) => {
+      if (loading) return
+      e.preventDefault()
+      const psw = inputRef.current?.value
+      if (!psw) {
+        return toast.error('密码不能为空')
       }
-      const res = await RESTManager.api.master.login
-        .post<{
+      if (!user || !user.username) {
+        return toast.error('主人信息无法获取')
+      }
+      setLoading(true)
+      try {
+        const res = await RESTManager.api.master.login.post<{
           token: string & UserModel
         }>({
           data: {
@@ -105,17 +102,19 @@ const LoginPage = () => {
             password: inputRef.current?.value,
           },
         })
-        .finally(() => {
-          setLoading(false)
-        })
-
-      if (res.token) {
-        postSuccessfulLogin(res.token)
+        if (res.token) {
+          postSuccessfulLogin(res.token)
+        } else {
+          toast.error('登录失败，令牌无效')
+        }
+      } catch (err: any) {
+        toast.error(err.response?.data?.message || '登录失败')
+      } finally {
+        setLoading(false)
       }
-    } catch {
-      toast.error('登录失败')
-    }
-  }
+    },
+    [loading, postSuccessfulLogin, user],
+  )
   const showPasswordInput =
     typeof settings === 'undefined' || settings.password === true
   return (
@@ -128,6 +127,7 @@ const LoginPage = () => {
 
         {showPasswordInput && (
           <form
+            aria-disabled={loading}
             onSubmit={(e) => {
               e.preventDefault()
               handleLogin(e)

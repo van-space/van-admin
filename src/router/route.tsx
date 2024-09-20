@@ -7,7 +7,6 @@ import SetupLayout from '~/layouts/setup-view'
 import Dashboard from '~/pages/dashboard'
 import LoginPage from '~/pages/login'
 
-import { loginAction } from './action'
 import { baseLoader, protectedLoader } from './loader'
 import { RouteName } from './name'
 
@@ -41,7 +40,6 @@ export const routes: RouteObject[] = [
       {
         path: 'login',
         id: RouteName.Login,
-        action: loginAction,
         loader: baseLoader, // or use buildLoader([loginLoader])
         Component: LoginPage,
         handle: {
