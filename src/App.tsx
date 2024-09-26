@@ -9,6 +9,8 @@ import { rootStore } from './store'
 
 import './global.css'
 
+import { ThemeProvider } from '~/components/ThemeProvider'
+
 import { router } from './router'
 
 const queryClient = new QueryClient()
@@ -18,14 +20,16 @@ export default function App() {
     window.message = toast
   }, [])
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <ReactReduxProvider store={rootStore}>
-        <Suspense fallback={<div>loading...</div>}>
-          <RouterProvider router={router} />
-        </Suspense>
-      </ReactReduxProvider>
-      <Toaster toastOptions={{}} />
-    </QueryClientProvider>
+    <ThemeProvider defaultTheme="light" storageKey="van-ui-theme">
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactReduxProvider store={rootStore}>
+          <Suspense fallback={<div>loading...</div>}>
+            <RouterProvider router={router} />
+          </Suspense>
+        </ReactReduxProvider>
+        <Toaster toastOptions={{}} />
+      </QueryClientProvider>
+    </ThemeProvider>
   )
 }

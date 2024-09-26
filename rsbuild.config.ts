@@ -1,7 +1,7 @@
 import { pluginReact } from '@rsbuild/plugin-react'
 
 import { defineConfig, loadEnv } from '@rsbuild/core'
-import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
+import { pluginSvgr } from '@rsbuild/plugin-svgr'
 
 import PKG from './package.json'
 
@@ -26,7 +26,7 @@ export default defineConfig({
       }'}</script>`,
     },
   },
-  plugins: [pluginReact()],
+  plugins: [pluginReact(), pluginSvgr()],
 
   server: {
     port: 10086,
@@ -41,14 +41,6 @@ export default defineConfig({
     },
   },
   tools: {
-    rspack(_, { appendPlugins }) {
-      if (process.env.RSDOCTOR) {
-        appendPlugins(
-          new RsdoctorRspackPlugin({
-            // 插件选项
-          }),
-        )
-      }
-    },
+    rspack(_, { appendPlugins }) {},
   },
 })

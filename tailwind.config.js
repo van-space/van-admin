@@ -6,12 +6,7 @@ import animate from 'tailwindcss-animate'
 import { fontFamily } from 'tailwindcss/defaultTheme'
 
 module.exports = {
-  content: [
-    './src/**/*.html',
-    './src/**/*.tsx',
-    'app/**/*.{ts,tsx}',
-    'components/**/*.{ts,tsx}',
-  ],
+  content: ['./src/**/*.{html,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,

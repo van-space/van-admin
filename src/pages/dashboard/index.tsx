@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
+import { ModeToggle } from '~/components/ModeToggle/index'
 import { removeToken } from '~/utils/auth'
 import { RESTManager } from '~/utils/rest'
 
@@ -13,6 +14,9 @@ const Dashboard = () => {
   return (
     <>
       <h1>Dashboard</h1>
+      <div>
+        <ModeToggle />
+      </div>
       <button type="button" onClick={logout}>
         Logout
       </button>
