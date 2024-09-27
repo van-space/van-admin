@@ -18,6 +18,7 @@ export function setToken(token: string) {
     expires: 14,
   })
 }
+
 export function removeToken() {
   return Cookies.remove(TokenKey)
 }

@@ -5,6 +5,7 @@ import { API_URL, GATEWAY_URL } from '~/constants/env'
 import { SESSION_WITH_LOGIN } from '~/constants/keys'
 import { getTokenIsUpstream } from '~/store/slice/user.slice'
 import { removeToken, setToken } from '~/utils/auth'
+import { checkIsInit } from '~/utils/is-init'
 import { RESTManager } from '~/utils/rest'
 
 let lastCheckedLogAt = 0
@@ -27,8 +28,7 @@ export async function protectedLoader({ request }: LoaderFunctionArgs) {
   // guard for setup route
 
   if (path === '/setup') {
-    // TODO const isInit = await checkIsInit()
-    const isInit = false
+    const isInit = await checkIsInit()
     console.log('[isInit]', isInit)
     if (isInit) {
       return redirect('/')
@@ -95,11 +95,10 @@ export async function baseLoader({ request }: LoaderFunctionArgs) {
   // guard for setup route
 
   if (path === '/setup') {
-    // TODO const isInit = await checkIsInit()
-    const isInit = false
+    const isInit = await checkIsInit()
     console.log('[isInit]', isInit)
     if (isInit) {
-      return redirect('/')
+      // return redirect('/')
     }
   }
 
