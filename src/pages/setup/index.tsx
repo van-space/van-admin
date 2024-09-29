@@ -61,7 +61,7 @@ const Setup = () => {
     init()
   }, [])
 
-  const stepper = useStepper('4')
+  const stepper = useStepper()
 
   return (
     <defaultConfigsContext.Provider value={defaultConfigs}>
@@ -201,7 +201,7 @@ const Step1 = ({ stepper }: { stepper: Stepper<any> }) => {
   const { setValue } = form
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleNext)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleNext)} className="space-y-4">
         <FormField
           control={form.control}
           name="title"
@@ -371,7 +371,7 @@ const Step2 = ({ stepper }: { stepper: Stepper<any> }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleNext)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleNext)} className="space-y-4">
         <FormField
           control={form.control}
           name="username"
