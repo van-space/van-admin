@@ -31,10 +31,12 @@
   },
   "dependencies": {
     "@auth/core": "^0.35.2",
+    "@hookform/resolvers": "3.9.0",
     "@mx-space/api-client": "^1.16.1",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dropdown-menu": "2.1.1",
     "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-label": "2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "1.2.1",
     "@reduxjs/toolkit": "^2.2.7",
@@ -52,6 +54,7 @@
     "canvas-confetti": "1.9.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "emblor": "1.4.6",
     "js-cookie": "^3.0.5",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.441.0",
@@ -60,6 +63,7 @@
     "qier-progress": "^1.0.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "7.53.0",
     "react-hot-toast": "2.4.1",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.26.2",
@@ -68,7 +72,8 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.13",
     "tailwindcss-animate": "^1.0.7",
-    "umi-request": "^1.4.0"
+    "umi-request": "^1.4.0",
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.2",

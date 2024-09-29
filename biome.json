@@ -76,7 +76,8 @@
         "useConst": "error",
         "useImportType": "warn",
         "useTemplate": "error",
-        "useSelfClosingElements": "error"
+        "useSelfClosingElements": "error",
+        "noNonNullAssertion": "off"
       },
       "suspicious": {
         "noAssignInExpressions": "off",

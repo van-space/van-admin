@@ -58,6 +58,8 @@ import Log from '@vicons/tabler/es/News'
 import Pencil from '@vicons/tabler/es/Pencil'
 import Settings from '@vicons/tabler/es/Settings'
 
+import { cn } from '~/utils'
+
 export { Lock as LockIcon }
 export { Pen as PenIcon }
 export {
@@ -605,6 +607,24 @@ export function MingcuteUserStarFill() {
           d="M11 2a5 5 0 1 0 0 10a5 5 0 0 0 0-10Zm0 11c-2.395 0-4.575.694-6.178 1.671c-.8.49-1.484 1.065-1.978 1.69C2.358 16.977 2 17.713 2 18.5c0 .845.411 1.511 1.003 1.986c.56.45 1.299.748 2.084.956C6.665 21.859 8.771 22 11 22c.23 0 .46-.002.685-.005a1 1 0 0 0 .89-1.428A5.973 5.973 0 0 1 12 18c0-1.252.383-2.412 1.037-3.373a1 1 0 0 0-.72-1.557c-.43-.046-.87-.07-1.317-.07Zm7.864.997a1 1 0 0 0-1.728 0l-.91 1.562l-1.766.382a1 1 0 0 0-.534 1.644l1.204 1.348l-.182 1.798a1 1 0 0 0 1.398 1.016l1.654-.73l1.654.73a1 1 0 0 0 1.398-1.016l-.182-1.799l1.204-1.347a1 1 0 0 0-.534-1.644l-1.766-.382l-.91-1.562Z"
         />
       </g>
+    </svg>
+  )
+}
+export const LoadingSpinner = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn('animate-spin', className)}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </svg>
   )
 }

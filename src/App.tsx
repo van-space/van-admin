@@ -9,7 +9,7 @@ import { rootStore } from './store'
 
 import './global.css'
 
-import { ThemeProvider } from '~/components/ThemeProvider'
+import { ThemeProvider } from '~/providers/theme-provider'
 
 import { router } from './router'
 

@@ -82,7 +82,19 @@
       'calt' 1;
   }
 }
+@layer components {
+  .modal-card {
+    @apply !w-[60rem] !max-w-[90vw];
 
+    &.sm {
+      @apply !w-[40rem];
+    }
+
+    &.xs {
+      @apply !w-[30rem];
+    }
+  }
+}
 /* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap'); */
 * {
   -webkit-tap-highlight-color: transparent;
