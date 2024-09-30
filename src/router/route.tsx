@@ -18,40 +18,51 @@ function getPageTitle(pageTitle?: string | null) {
   return `${title}`
 }
 export const routes: RouteObject[] = [
+  // protected routes
   {
     path: '/',
+    id: 'app',
     Component: AppLayout,
     children: [
       {
         index: true,
         id: RouteName.Dashboard,
-        loader: protectedLoader,
         Component: Dashboard,
         handle: {
-          title: () => getPageTitle('工作台'),
+          name: '工作台',
         },
       },
-    ],
+    ].map((route) => {
+      return {
+        ...route,
+        handle: {
+          ...route.handle,
+          title: () => getPageTitle(route.handle?.name),
+        },
+        loader: protectedLoader,
+      }
+    }),
   },
+  // public routes
   {
     path: '/',
+    id: 'setting',
     Component: SetupLayout,
     children: [
       {
         path: 'login',
         id: RouteName.Login,
-        loader: baseLoader, // or use buildLoader([loginLoader])
         Component: LoginPage,
         handle: {
-          title: () => getPageTitle('登录'),
+          name: '登录',
         },
       },
       {
         path: 'setup',
+        id: RouteName.Setup,
         handle: {
-          title: () => getPageTitle('初始化'),
+          name: '初始化',
         },
-        loader: baseLoader,
         async lazy() {
           const Setup = await import('~/pages/setup')
           return {
@@ -61,10 +72,10 @@ export const routes: RouteObject[] = [
       },
       {
         path: 'setup-api',
+        id: RouteName.SetupApi,
         handle: {
-          title: () => getPageTitle('初始化'),
+          name: '初始化 API',
         },
-        loader: baseLoader,
         async lazy() {
           const SetupApi = await import('~/pages/setup-api')
           return {
@@ -72,7 +83,16 @@ export const routes: RouteObject[] = [
           }
         },
       },
-    ],
+    ].map((route) => {
+      return {
+        ...route,
+        handle: {
+          ...route.handle,
+          title: () => getPageTitle(route.handle?.name),
+        },
+        loader: baseLoader,
+      }
+    }),
   },
   {
     path: '/logout',
@@ -87,3 +107,38 @@ export const routes: RouteObject[] = [
     loader: () => redirect('/'),
   },
 ]
+// 递归获取所有路由，包括嵌套路由
+export const getAllRoutes = (routes: RouteObject[]) => {
+  let allRoutes: any[] = []
+  for (const route of routes) {
+    if (route.path === '*' || route.path === '/logout') {
+      continue
+    }
+    if (route.index) {
+      allRoutes.push({
+        path: '/',
+        title: route.handle?.name ?? '',
+        name: route.id,
+      })
+    } else {
+      if (route.id !== 'app' && route.id !== 'setting') {
+        allRoutes.push({
+          path: route.path
+            ? route.path.startsWith('/')
+              ? route.path
+              : `/${route.path}`
+            : '',
+          title: route.handle?.name ?? '',
+          name: route.id,
+        })
+      }
+    }
+
+    if (route.children) {
+      const childRoutes = getAllRoutes(route.children)
+      allRoutes = allRoutes.concat(childRoutes)
+    }
+  }
+
+  return allRoutes
+}

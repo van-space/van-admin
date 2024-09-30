@@ -58,6 +58,7 @@
     "clsx": "^2.1.1",
     "emblor": "1.4.6",
     "js-cookie": "^3.0.5",
+    "kbar": "0.1.0-beta.45",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.441.0",
     "nanoid": "^5.0.7",
@@ -101,7 +102,7 @@
     "typescript": "^5.6.2"
   },
   "resolutions": {
-    "prettier-plugin-tailwindcss": "0.6.8"
+    "prettier-plugin-tailwindcss": "0.6.5"
   },
   "packageManager": "pnpm@9.11.0"
 }

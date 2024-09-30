@@ -98,7 +98,7 @@ export async function baseLoader({ request }: LoaderFunctionArgs) {
     const isInit = await checkIsInit()
     console.log('[isInit]', isInit)
     if (isInit) {
-      // return redirect('/')
+      return redirect('/')
     }
   }
 

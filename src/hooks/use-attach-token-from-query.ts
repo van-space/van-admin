@@ -33,5 +33,5 @@ export const useAttachTokenFromQuery = () => {
         navigate(parsedUrl.toString())
       }
     }
-  }, [])
+  }, [navigate])
 }

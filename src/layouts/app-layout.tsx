@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom'
 
 import BaseLayout from './base-layout'
+import { SidebarLayout } from './side-bar'
 
 const AppLayout = () => {
   return (
     <BaseLayout>
-      <h1>This is AppLayout</h1>
+      <SidebarLayout />
       <Outlet />
     </BaseLayout>
   )
