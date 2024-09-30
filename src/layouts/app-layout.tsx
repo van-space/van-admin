@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
 import BaseLayout from './base-layout'
-import { SidebarLayout } from './side-bar'
+import { SidebarLayout } from './sidebar'
 
 const AppLayout = () => {
   return (

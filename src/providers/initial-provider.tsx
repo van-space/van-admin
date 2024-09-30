@@ -9,7 +9,6 @@ export const progress = new QProgress({ colorful: false, color: '#1a9cf3' })
 export const InitialProvider = ({ children }) => {
   const matches = useMatches()
   const navigation = useNavigation()
-
   const { handle, data } = matches[matches.length - 1] as any
   const title = handle && handle.title(data)
   useEffect(() => {
@@ -28,5 +27,6 @@ export const InitialProvider = ({ children }) => {
   }, [navigation.state])
 
   useAttachTokenFromQuery()
+
   return <>{children}</>
 }
