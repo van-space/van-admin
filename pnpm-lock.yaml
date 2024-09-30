@@ -166,8 +166,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@rsbuild/core@1.0.8)
       '@rsbuild/plugin-svgr':
-        specifier: 1.0.2
-        version: 1.0.2(@rsbuild/core@1.0.8)(typescript@5.6.2)
+        specifier: 1.0.3
+        version: 1.0.3(@rsbuild/core@1.0.8)(typescript@5.6.2)
       '@rsdoctor/rspack-plugin':
         specifier: ^0.4.5
         version: 0.4.5(@rspack/core@1.0.7(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.17.19))
@@ -1482,18 +1482,13 @@ packages:
       '@rsbuild/core':
         optional: true
 
-  '@rsbuild/plugin-react@1.0.2':
-    resolution: {integrity: sha512-8Sa4AJ43/ift7ZW1iNMA38ZIEDXNINPa8rGI38u7b42yBgMUWBan8yDjFYAC0Gkg3lh8vCWYVQYZp0RyIS7lqA==}
-    peerDependencies:
-      '@rsbuild/core': 1.x || ^1.0.1-rc.0
-
   '@rsbuild/plugin-react@1.0.3':
     resolution: {integrity: sha512-HVfPiKINmDsIcLLs7YWAYQgzytVZOydBuPOFg5EoJiMHkFVjH0Rg3QViS3Hn6k3INqdc6ylpcYyOHHYItEIkWA==}
     peerDependencies:
       '@rsbuild/core': 1.x || ^1.0.1-rc.0
 
-  '@rsbuild/plugin-svgr@1.0.2':
-    resolution: {integrity: sha512-zPJTsZVtBGTIzwV1g76GylSn4b5HIakaq3L0X1qDFBDv4+bQnfzrd6Fb8DX0/BMZQR0rZh/8elKeTHNJ2hp7LA==}
+  '@rsbuild/plugin-svgr@1.0.3':
+    resolution: {integrity: sha512-O9IyAfKQCws9DErsIMOw2fJteK3C+d+MHRKzzsIMIYm/2tHbHs2wdSEgCgyxKbCt0NURf6y/KE7R1Em3Je4/+w==}
     peerDependencies:
       '@rsbuild/core': 1.x || ^1.0.1-rc.0
 
@@ -5247,22 +5242,16 @@ snapshots:
     optionalDependencies:
       '@rsbuild/core': 1.0.8
 
-  '@rsbuild/plugin-react@1.0.2(@rsbuild/core@1.0.8)':
-    dependencies:
-      '@rsbuild/core': 1.0.8
-      '@rspack/plugin-react-refresh': 1.0.0(react-refresh@0.14.2)
-      react-refresh: 0.14.2
-
   '@rsbuild/plugin-react@1.0.3(@rsbuild/core@1.0.8)':
     dependencies:
       '@rsbuild/core': 1.0.8
       '@rspack/plugin-react-refresh': 1.0.0(react-refresh@0.14.2)
       react-refresh: 0.14.2
 
-  '@rsbuild/plugin-svgr@1.0.2(@rsbuild/core@1.0.8)(typescript@5.6.2)':
+  '@rsbuild/plugin-svgr@1.0.3(@rsbuild/core@1.0.8)(typescript@5.6.2)':
     dependencies:
       '@rsbuild/core': 1.0.8
-      '@rsbuild/plugin-react': 1.0.2(@rsbuild/core@1.0.8)
+      '@rsbuild/plugin-react': 1.0.3(@rsbuild/core@1.0.8)
       '@svgr/core': 8.1.0(typescript@5.6.2)
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))
       '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))(typescript@5.6.2)
