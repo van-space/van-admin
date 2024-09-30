@@ -101,7 +101,7 @@
     "typescript": "^5.6.2"
   },
   "resolutions": {
-    "prettier-plugin-tailwindcss": "0.6.5"
+    "prettier-plugin-tailwindcss": "0.6.8"
   },
   "packageManager": "pnpm@9.11.0"
 }
