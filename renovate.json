@@ -25,6 +25,7 @@
     "@codemirror/view",
     "@ddietr/codemirror-themes",
     "@lezer/highlight",
+    "prettier-plugin-tailwindcss",
     "eslint"
   ]
 }
