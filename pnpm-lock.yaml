@@ -157,17 +157,17 @@ importers:
         specifier: ^0.14.2
         version: 0.14.2(@vue/compiler-sfc@3.5.6)
       '@rsbuild/core':
-        specifier: ^1.0.7
-        version: 1.0.7
+        specifier: ^1.0.8
+        version: 1.0.8
       '@rsbuild/plugin-basic-ssl':
         specifier: ^1.1.1
-        version: 1.1.1(@rsbuild/core@1.0.7)
+        version: 1.1.1(@rsbuild/core@1.0.8)
       '@rsbuild/plugin-react':
         specifier: ^1.0.2
-        version: 1.0.2(@rsbuild/core@1.0.7)
+        version: 1.0.2(@rsbuild/core@1.0.8)
       '@rsbuild/plugin-svgr':
         specifier: 1.0.2
-        version: 1.0.2(@rsbuild/core@1.0.7)(typescript@5.6.2)
+        version: 1.0.2(@rsbuild/core@1.0.8)(typescript@5.6.2)
       '@rsdoctor/rspack-plugin':
         specifier: ^0.4.4
         version: 0.4.4(@rspack/core@1.0.7(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.17.19))
@@ -1469,8 +1469,8 @@ packages:
     resolution: {integrity: sha512-baiMx18+IMuD1yyvOGaHM9QrVUPGGG0jC+z+IPHnRJWUAUvaKuWKyE8gjDj2rzv3sz9zOGoRSPgeBVHRhZnBlA==}
     engines: {node: '>=14.0.0'}
 
-  '@rsbuild/core@1.0.7':
-    resolution: {integrity: sha512-NqPAtKnPGdvKituKehTzUd8bnzVsdAs6vLY82OwymkmMlW9zcFYfeVYAfSUS3uTv7vDIFQwff0PHgYYV3ufpwQ==}
+  '@rsbuild/core@1.0.8':
+    resolution: {integrity: sha512-c5tdq+mcP3xZWaNN5J+Rderzcp6uA9NfbyQtYMqYvlNfEw9RcsqQYMPoUMqpx1V9jqbKHSNl/fTtves1X+TS2A==}
     engines: {node: '>=16.7.0'}
     hasBin: true
 
@@ -5219,32 +5219,31 @@ snapshots:
 
   '@remix-run/router@1.19.2': {}
 
-  '@rsbuild/core@1.0.7':
+  '@rsbuild/core@1.0.8':
     dependencies:
       '@rspack/core': 1.0.7(@swc/helpers@0.5.13)
       '@rspack/lite-tapable': 1.0.0
       '@swc/helpers': 0.5.13
-      caniuse-lite: 1.0.30001664
       core-js: 3.38.1
     optionalDependencies:
       fsevents: 2.3.3
 
-  '@rsbuild/plugin-basic-ssl@1.1.1(@rsbuild/core@1.0.7)':
+  '@rsbuild/plugin-basic-ssl@1.1.1(@rsbuild/core@1.0.8)':
     dependencies:
       selfsigned: 2.4.1
     optionalDependencies:
-      '@rsbuild/core': 1.0.7
+      '@rsbuild/core': 1.0.8
 
-  '@rsbuild/plugin-react@1.0.2(@rsbuild/core@1.0.7)':
+  '@rsbuild/plugin-react@1.0.2(@rsbuild/core@1.0.8)':
     dependencies:
-      '@rsbuild/core': 1.0.7
+      '@rsbuild/core': 1.0.8
       '@rspack/plugin-react-refresh': 1.0.0(react-refresh@0.14.2)
       react-refresh: 0.14.2
 
-  '@rsbuild/plugin-svgr@1.0.2(@rsbuild/core@1.0.7)(typescript@5.6.2)':
+  '@rsbuild/plugin-svgr@1.0.2(@rsbuild/core@1.0.8)(typescript@5.6.2)':
     dependencies:
-      '@rsbuild/core': 1.0.7
-      '@rsbuild/plugin-react': 1.0.2(@rsbuild/core@1.0.7)
+      '@rsbuild/core': 1.0.8
+      '@rsbuild/plugin-react': 1.0.2(@rsbuild/core@1.0.8)
       '@svgr/core': 8.1.0(typescript@5.6.2)
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))
       '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))(typescript@5.6.2)
