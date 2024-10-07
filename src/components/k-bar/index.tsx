@@ -9,11 +9,11 @@ import {
   useMatches,
 } from 'kbar'
 
-import { getAllRoutes, routes } from '~/router/route'
+import { getAllRoutes, rootRoutes } from '~/router/route'
 import { cn } from '~/utils'
 
 export const KBarWrapper = ({ children }) => {
-  const list = getAllRoutes(routes)
+  const list = getAllRoutes(rootRoutes)
   const navigate = useNavigate()
   const actions = list
     .map((route) => ({

@@ -1,7 +1,5 @@
 import { toast } from 'react-hot-toast'
 
-import { router } from '~/router'
-
 import { RESTManager } from './rest'
 
 export const checkIsInit = async (): Promise<boolean> => {
@@ -22,7 +20,7 @@ export const checkIsInit = async (): Promise<boolean> => {
           })
           .then((res) => {
             if (typeof res !== 'object' || (res && !('isInit' in res))) {
-              router.navigate('/setup')
+              window.location.pathname = '/setup'
               toast.error('api error')
             }
             return res

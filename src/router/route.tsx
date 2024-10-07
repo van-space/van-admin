@@ -17,7 +17,7 @@ function getPageTitle(pageTitle?: string | null) {
   }
   return `${title}`
 }
-export const routes: RouteObject[] = [
+export const rootRoutes: RouteObject[] = [
   // protected routes
   {
     path: '/',

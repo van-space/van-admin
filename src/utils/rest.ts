@@ -5,7 +5,6 @@ import type { RequestMethod, RequestOptionsInit } from 'umi-request'
 import { simpleCamelcaseKeys } from '@mx-space/api-client'
 
 import { API_URL } from '~/constants/env'
-import { router } from '~/router'
 import { uuid } from '~/utils'
 
 import { getToken } from './auth'
@@ -53,11 +52,9 @@ class RESTManagerStatic {
           }
 
           if (error?.response?.status === 401) {
-            router.navigate(
-              `/login?from=${encodeURIComponent(
-                router.state.location.pathname,
-              )}`,
-            )
+            window.location.pathname = `/login?from=${encodeURIComponent(
+              window.location.pathname,
+            )}`
           }
           return Promise.reject(error)
         }

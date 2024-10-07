@@ -2,7 +2,6 @@ import type { UserModel } from '~/models/user'
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { router } from '~/router'
 import { setToken } from '~/utils/auth'
 import { RESTManager } from '~/utils/rest'
 
@@ -31,7 +30,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
     return result
   } catch (error: any) {
     if (error.data?.message === '没有完成初始化！') {
-      router.navigate('/setup')
+      window.location.pathname = '/setup'
     }
   }
 })
