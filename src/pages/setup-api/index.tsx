@@ -67,8 +67,9 @@ const SetupApi = () => {
 
     sessionStorage.removeItem('__api')
     sessionStorage.removeItem('__gateway')
+    const url = new URL(location.origin)
 
-    location.href = location.pathname
+    location.href = url.toString()
     location.hash = ''
   }
   const handleAddApiUrl = (apiUrl: string) => {
@@ -98,12 +99,9 @@ const SetupApi = () => {
       JSON.stringify([...new Set(historyGatewayUrl.concat(gatewayUrl))]),
     )
 
-    const url = new URL(location.href)
-
-    url.hash = '#/'
+    const url = new URL(location.origin)
 
     location.href = url.toString()
-    location.reload()
   }
 
   return (

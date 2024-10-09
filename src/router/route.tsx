@@ -1,144 +1,71 @@
-import { redirect } from 'react-router-dom'
-import type { RouteObject } from 'react-router-dom'
+import { lazy } from 'react'
+import { Navigate } from 'react-router-dom'
+import type { RouteObject } from './interface'
 
-import { configs } from '~/config'
 import AppLayout from '~/layouts/app-layout'
 import SetupLayout from '~/layouts/setup-view'
-import Dashboard from '~/pages/dashboard'
-import LoginPage from '~/pages/login'
 
-import { baseLoader, protectedLoader } from './loader'
-import { RouteName } from './name'
+import lazyLoad from './utils/LazyLoad'
 
-const title = configs.title
-function getPageTitle(pageTitle?: string | null) {
-  if (pageTitle) {
-    return `${pageTitle} - ${title}`
-  }
-  return `${title}`
-}
 export const rootRoutes: RouteObject[] = [
   // protected routes
   {
     path: '/',
-    id: 'app',
-    Component: AppLayout,
+    element: <AppLayout />,
     children: [
       {
         index: true,
-        id: RouteName.Dashboard,
-        Component: Dashboard,
-        handle: {
-          name: '工作台',
+        element: lazyLoad(lazy(() => import('~/pages/dashboard'))),
+        meta: {
+          requiresAuth: true,
+          title: '面板',
+          key: 'dashboard',
         },
       },
-    ].map((route) => {
-      return {
-        ...route,
-        handle: {
-          ...route.handle,
-          title: () => getPageTitle(route.handle?.name),
-        },
-        loader: protectedLoader,
-      }
-    }),
+    ],
   },
   // public routes
   {
     path: '/',
-    id: 'setting',
-    Component: SetupLayout,
+    element: <SetupLayout />,
     children: [
       {
-        path: 'login',
-        id: RouteName.Login,
-        Component: LoginPage,
-        handle: {
-          name: '登录',
+        path: '/login',
+        element: lazyLoad(lazy(() => import('~/pages/login'))),
+        meta: {
+          requiresAuth: false,
+          title: '登录',
+          key: 'login',
         },
       },
       {
-        path: 'setup',
-        id: RouteName.Setup,
-        handle: {
-          name: '初始化',
-        },
-        async lazy() {
-          const Setup = await import('~/pages/setup')
-          return {
-            Component: Setup.default,
-          }
+        path: '/setup',
+        element: lazyLoad(lazy(() => import('~/pages/setup'))),
+        meta: {
+          requiresAuth: false,
+          title: '初始化',
+          key: 'login',
         },
       },
       {
-        path: 'setup-api',
-        id: RouteName.SetupApi,
-        handle: {
-          name: '初始化 API',
-        },
-        async lazy() {
-          const SetupApi = await import('~/pages/setup-api')
-          return {
-            Component: SetupApi.default,
-          }
+        path: '/setup-api',
+        element: lazyLoad(lazy(() => import('~/pages/setup-api'))),
+        meta: {
+          requiresAuth: false,
+          title: '初始化 API',
+          key: 'login',
         },
       },
-    ].map((route) => {
-      return {
-        ...route,
-        handle: {
-          ...route.handle,
-          title: () => getPageTitle(route.handle?.name),
-        },
-        loader: baseLoader,
-      }
-    }),
+    ],
   },
   {
     path: '/logout',
-    async action() {
-      // We signout in a "resource route" that we can hit from a fetcher.Form
-      return redirect('/')
-    },
+    element: <Navigate to={'/login'} />,
   },
   {
     path: '*',
-    id: '404',
-    loader: () => redirect('/'),
+    element: <Navigate to={'/login'} />,
   },
 ]
 // 递归获取所有路由，包括嵌套路由
-export const getAllRoutes = (routes: RouteObject[]) => {
-  let allRoutes: any[] = []
-  for (const route of routes) {
-    if (route.path === '*' || route.path === '/logout') {
-      continue
-    }
-    if (route.index) {
-      allRoutes.push({
-        path: '/',
-        title: route.handle?.name ?? '',
-        name: route.id,
-      })
-    } else {
-      if (route.id !== 'app' && route.id !== 'setting') {
-        allRoutes.push({
-          path: route.path
-            ? route.path.startsWith('/')
-              ? route.path
-              : `/${route.path}`
-            : '',
-          title: route.handle?.name ?? '',
-          name: route.id,
-        })
-      }
-    }
-
-    if (route.children) {
-      const childRoutes = getAllRoutes(route.children)
-      allRoutes = allRoutes.concat(childRoutes)
-    }
-  }
-
-  return allRoutes
-}
+export const getAllRoutes = () => {}
