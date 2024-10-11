@@ -1,5 +1,5 @@
 import { defineStepper } from '@stepperize/react'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, Fragment, useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 import { TagInput } from 'emblor'
@@ -10,13 +10,7 @@ import type { Tag } from 'emblor'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Button } from '~/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card'
 import {
   Form,
   FormControl,
@@ -27,6 +21,7 @@ import {
 } from '~/components/ui/form'
 import { LoadingSpinner } from '~/components/ui/icons'
 import { Input } from '~/components/ui/input'
+import { Separator } from '~/components/ui/separator'
 import { getToken, removeToken } from '~/utils/auth'
 import { showConfetti } from '~/utils/confetti'
 import { checkIsInit } from '~/utils/is-init'
@@ -34,11 +29,16 @@ import { RESTManager } from '~/utils/rest'
 
 import styles from './index.module.css'
 
-const { useStepper } = defineStepper(
-  { id: '1', title: '(๑•̀ㅂ•́)و✧', description: '让我们开始吧' },
-  { id: '2', title: '站点设置', description: '先设置一下站点相关配置吧' },
-  { id: '3', title: '主人信息', description: '请告诉你的名字' },
-  { id: '4', title: '(๑•̀ㅂ•́)و✧', description: '一切就绪了' },
+const { useStepper, steps } = defineStepper(
+  { id: '1', index: 0, title: '(๑•̀ㅂ•́)و✧', description: '让我们开始吧' },
+  {
+    id: '2',
+    index: 1,
+    title: '站点设置',
+    description: '先设置一下站点相关配置吧!',
+  },
+  { id: '3', index: 2, title: '主人信息', description: '请告诉你的名字' },
+  { id: '4', index: 3, title: '(๑•̀ㅂ•́)و✧', description: '一切就绪了' },
 )
 const defaultConfigsContext = createContext<Record<string, any>>({})
 const Setup = () => {
@@ -52,7 +52,6 @@ const Setup = () => {
         removeToken()
       }
       const configs = await RESTManager.api.init.configs.default.get<any>()
-      console.log('🚀 ~ init ~ configs:', configs)
       setDefaultConfigs((prev) => ({
         ...prev,
         ...configs,
@@ -66,8 +65,58 @@ const Setup = () => {
   return (
     <defaultConfigsContext.Provider value={defaultConfigs}>
       <div className={styles.full}>
-        <Card className="modal-card sm form-card m-auto p-4">
-          <CardTitle>初始化</CardTitle>
+        <Card className="form-card m-auto p-4">
+          <CardHeader>
+            <CardTitle>初始化</CardTitle>
+            <nav aria-label="Checkout Steps" className="group my-4">
+              <ol
+                className="flex items-center justify-between gap-2"
+                aria-orientation="horizontal"
+              >
+                {stepper.all.map((step, index, array) => (
+                  <Fragment key={step.id}>
+                    <li className="flex flex-shrink-0 items-center gap-4">
+                      <Button
+                        type="button"
+                        role="tab"
+                        variant={
+                          index <= stepper.current.index
+                            ? 'default'
+                            : 'secondary'
+                        }
+                        aria-current={
+                          stepper.current.id === step.id ? 'step' : undefined
+                        }
+                        aria-posinset={index + 1}
+                        aria-setsize={steps.length}
+                        aria-selected={stepper.current.id === step.id}
+                        className="flex size-10 items-center justify-center rounded-full"
+                        // onClick={() => stepper.goTo(step.id)}
+                      >
+                        {index + 1}
+                      </Button>
+                      <div>
+                        <div className="text-sm font-medium">{step.title}</div>
+                        <div className="text-sm font-medium">
+                          {step.description}
+                        </div>
+                      </div>
+                    </li>
+                    {index < array.length - 1 && (
+                      <Separator
+                        className={`flex-1 ${
+                          index < stepper.current.index
+                            ? 'bg-primary'
+                            : 'bg-muted'
+                        }`}
+                      />
+                    )}
+                  </Fragment>
+                ))}
+              </ol>
+            </nav>
+          </CardHeader>
+
           {JSON.stringify(defaultConfigs) === '{}' ? (
             <div className="py-4 text-center">
               <span>
@@ -75,28 +124,20 @@ const Setup = () => {
               </span>
             </div>
           ) : (
-            <>
-              <CardHeader>
-                <CardTitle>{stepper.current.title}</CardTitle>
-                <CardDescription>
-                  {stepper.current.description}{' '}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {stepper.when('1', () => (
-                  <Step0 stepper={stepper} />
-                ))}
-                {stepper.when('2', () => (
-                  <Step1 stepper={stepper} />
-                ))}
-                {stepper.when('3', () => (
-                  <Step2 stepper={stepper} />
-                ))}
-                {stepper.when('4', () => (
-                  <Step3 stepper={stepper} />
-                ))}
-              </CardContent>
-            </>
+            <CardContent>
+              {stepper.when('1', () => (
+                <Step0 stepper={stepper} />
+              ))}
+              {stepper.when('2', () => (
+                <Step1 stepper={stepper} />
+              ))}
+              {stepper.when('3', () => (
+                <Step2 stepper={stepper} />
+              ))}
+              {stepper.when('4', () => (
+                <Step3 stepper={stepper} />
+              ))}
+            </CardContent>
           )}
         </Card>
       </div>
@@ -304,7 +345,9 @@ const Step1 = ({ stepper }: { stepper: Stepper<any> }) => {
             </FormItem>
           )}
         />
-        <Button type="submit">下一步</Button>
+        <div className="mt-6 text-end">
+          <Button type="submit">下一步</Button>
+        </div>
       </form>
     </Form>
   )
@@ -476,7 +519,9 @@ const Step2 = ({ stepper }: { stepper: Stepper<any> }) => {
             </FormItem>
           )}
         />
-        <Button type="submit">下一步</Button>
+        <div className="mt-6 text-end">
+          <Button type="submit">下一步</Button>
+        </div>
       </form>
     </Form>
   )
@@ -493,9 +538,9 @@ const Step3 = (_: { stepper: Stepper<any> }) => {
     }, 200)
   }
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <span className="text-base">你已经完成了所有的步骤，干得漂亮。</span>
-      <div>
+      <div className="text-end">
         <Button type="submit" onClick={handleClick}>
           LINK START
         </Button>

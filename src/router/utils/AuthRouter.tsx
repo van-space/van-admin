@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import type { PropsWithChildren } from 'react'
 
@@ -27,7 +27,7 @@ const AuthRouter = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     document.title = getPageTitle(route.meta?.title)
   }, [route])
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (pathname === '/setup-api') return
     if (!API_URL || !GATEWAY_URL) {
       console.log(
