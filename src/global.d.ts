@@ -13,6 +13,7 @@ declare global {
     }
     [K: string]: any
   }
+  export type KV = Record<string, any>
 }
 
 export {}

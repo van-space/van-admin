@@ -6,6 +6,8 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 import { isDev } from '~/constants/env'
 
+import { appSlice } from './slice/app.slice'
+import { uiSlice } from './slice/ui.slice'
 import { userSlice } from './slice/user.slice'
 
 const persistConfig = {
@@ -16,6 +18,8 @@ const persistConfig = {
 // 合并多个reducer
 const rootReducer = combineReducers({
   user: userSlice.reducer,
+  ui: uiSlice.reducer,
+  app: appSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

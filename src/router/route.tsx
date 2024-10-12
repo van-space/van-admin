@@ -2,9 +2,11 @@ import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 import type { RouteObject } from './interface'
 
+import { TachometerAltIcon } from '~/components/ui/icons'
 import AppLayout from '~/layouts/app-layout'
 import SetupLayout from '~/layouts/setup-view'
 
+import { RouteName } from './name'
 import lazyLoad from './utils/LazyLoad'
 
 export const rootRoutes: RouteObject[] = [
@@ -12,14 +14,18 @@ export const rootRoutes: RouteObject[] = [
   {
     path: '/',
     element: <AppLayout />,
+    name: RouteName.Home,
     children: [
       {
+        path: '/',
         index: true,
+        name: RouteName.Dashboard,
         element: lazyLoad(lazy(() => import('~/pages/dashboard'))),
         meta: {
           requiresAuth: true,
-          title: '面板',
+          title: '仪表盘',
           key: 'dashboard',
+          icon: TachometerAltIcon as any,
         },
       },
     ],
@@ -31,6 +37,7 @@ export const rootRoutes: RouteObject[] = [
     children: [
       {
         path: '/login',
+        name: RouteName.Login,
         element: lazyLoad(lazy(() => import('~/pages/login'))),
         meta: {
           requiresAuth: false,
@@ -40,6 +47,7 @@ export const rootRoutes: RouteObject[] = [
       },
       {
         path: '/setup',
+        name: RouteName.Setup,
         element: lazyLoad(lazy(() => import('~/pages/setup'))),
         meta: {
           requiresAuth: false,
@@ -68,4 +76,38 @@ export const rootRoutes: RouteObject[] = [
   },
 ]
 // 递归获取所有路由，包括嵌套路由
-export const getAllRoutes = () => {}
+export const getAllRoutes = (routes: RouteObject[]) => {
+  let allRoutes: any[] = []
+  for (const route of routes) {
+    if (route.path === '*' || route.path === '/logout') {
+      continue
+    }
+    if (route.index) {
+      allRoutes.push({
+        path: '/',
+        title: route.meta?.title ?? '',
+        name: route.meta?.key,
+      })
+    } else {
+      if (route.path !== '/') {
+        allRoutes.push({
+          path: route.path
+            ? route.path.startsWith('/')
+              ? route.path
+              : `/${route.path}`
+            : '',
+          title: route.meta?.title ?? '',
+          name: route.meta?.key,
+          icon: route.meta?.icon,
+        })
+      }
+    }
+
+    if (route.children) {
+      const childRoutes = getAllRoutes(route.children)
+      allRoutes = allRoutes.concat(childRoutes)
+    }
+  }
+
+  return allRoutes
+}

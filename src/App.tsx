@@ -9,6 +9,7 @@ import { rootStore } from './store'
 
 import './global.css'
 
+import LayoutProvider from '~/providers/layout-provider'
 import { ThemeProvider } from '~/providers/theme-provider'
 
 import { Router } from './router'
@@ -21,18 +22,20 @@ export default function App() {
     window.message = toast
   }, [])
   return (
-    <BrowserRouter>
-      <ThemeProvider defaultTheme="light" storageKey="van-ui-theme">
-        <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} />
-          <ReactReduxProvider store={rootStore}>
-            <AuthRouter>
-              <Router />
-            </AuthRouter>
-          </ReactReduxProvider>
-          <Toaster toastOptions={{}} />
-        </QueryClientProvider>
-      </ThemeProvider>
-    </BrowserRouter>
+    <ThemeProvider defaultTheme="light" storageKey="van-ui-theme">
+      <BrowserRouter>
+        <ReactReduxProvider store={rootStore}>
+          <LayoutProvider>
+            <QueryClientProvider client={queryClient}>
+              <ReactQueryDevtools initialIsOpen={false} />
+              <AuthRouter>
+                <Router />
+              </AuthRouter>
+              <Toaster toastOptions={{}} />
+            </QueryClientProvider>
+          </LayoutProvider>
+        </ReactReduxProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }

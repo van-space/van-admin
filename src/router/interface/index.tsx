@@ -1,8 +1,14 @@
+import type { ReactElement } from 'react'
+
 export interface MetaProps {
   keepAlive?: boolean
   requiresAuth?: boolean
   title: string
   key?: string
+  params?: KV
+  icon?: ReactElement
+  query?: KV
+  hide?: boolean
 }
 
 export interface RouteObject {
@@ -13,4 +19,5 @@ export interface RouteObject {
   index?: boolean
   meta?: MetaProps
   isLink?: string
+  name?: string
 }

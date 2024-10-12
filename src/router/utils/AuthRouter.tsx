@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import type { PropsWithChildren } from 'react'
 
-import { configs } from '~/config'
+import { configs } from '~/configs'
 import { API_URL, GATEWAY_URL } from '~/constants/env'
 import { SESSION_WITH_LOGIN } from '~/constants/keys'
 import { useAttachTokenFromQuery } from '~/hooks/use-attach-token-from-query'
