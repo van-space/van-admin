@@ -1,4 +1,12 @@
-import { createContext, useContext, useLayoutEffect, useState } from 'react'
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react'
+
+import { ThemeColorConfig } from '@/theme.config'
 
 type Theme = 'dark' | 'light' | 'system'
 
@@ -55,7 +63,20 @@ export function ThemeProvider({
       setTheme(theme)
     },
   }
-
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--color-primary',
+      ThemeColorConfig.primaryColor,
+    )
+    document.documentElement.style.setProperty(
+      '--color-primary-shallow',
+      ThemeColorConfig.primaryColorHover,
+    )
+    document.documentElement.style.setProperty(
+      '--color-primary-deep',
+      ThemeColorConfig.primaryColorSuppl,
+    )
+  }, [])
   return (
     <ThemeProviderContext.Provider {...props} value={value}>
       {children}

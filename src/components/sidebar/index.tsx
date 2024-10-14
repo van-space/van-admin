@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 // import { useDispatch } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import type { MenuModel } from '~/utils/build-menus'
 
 import { ModeToggle } from '~/components/mode-toggle'
@@ -12,11 +12,11 @@ import {
 } from '~/components/ui/tooltip'
 import { configs } from '~/configs'
 import { rootRoutes } from '~/router/route'
+import { useSelector } from '~/store/hooks'
 // import { useSelector } from '~/store/hooks'
 import { cn } from '~/utils'
 import { buildMenus } from '~/utils/build-menus'
 
-import { Button } from '../ui/button'
 import { ScrollArea } from '../ui/scroll-area'
 import { useSidebarStatusInjection } from './hooks'
 import styles from './index.module.css'
@@ -32,8 +32,6 @@ const Sidebar = ({
   width: number
   onCollapseChange: (s: boolean) => void
 }) => {
-  // const dispatch = useDispatch()
-  // const app = useSelector((state) => state.app.app)
   const title = configs.title
 
   const { SidebarCollapseStatusContext, onTransitionEnd, status } =
@@ -92,28 +90,36 @@ const Menu = ({ isOpen }: { isOpen: boolean }) => {
     setMenus(buildMenus(rootRoutes))
   }, [])
   const { pathname } = useLocation()
+  const viewport = useSelector((state) => state.ui.viewport)
+  const isPhone = useMemo(() => viewport.mobile, [viewport.mobile])
   return (
-    <ScrollArea className="[&>div>div[style]]:!block">
+    <ScrollArea className={styles.menu}>
       <nav className="mt-8 h-full w-full">
-        <ul className="flex min-h-[calc(100vh-48px-36px-16px-32px)] flex-col items-start space-y-1 px-2 lg:min-h-[calc(100vh-32px-40px-32px)]">
+        <ul className={styles.items}>
           {menus.map(({ title, icon: Icon, path }) => {
-            const active = pathname === path || pathname.startsWith(path)
+            // const active = pathname === path || pathname.startsWith(path)
             return (
               <li className="w-full" key={title}>
                 <TooltipProvider disableHoverableContent>
                   <Tooltip delayDuration={100}>
                     <TooltipTrigger asChild>
-                      <Button
-                        variant={
-                          (active === undefined && pathname.startsWith(path)) ||
-                          active
-                            ? 'secondary'
-                            : 'ghost'
-                        }
-                        className="mb-1 h-16 w-full justify-start"
-                        asChild
+                      <div
+                        className={cn([
+                          pathname === path || pathname.startsWith(path)
+                            ? styles.active
+                            : '',
+
+                          styles.item,
+                        ])}
+                        data-path={path}
                       >
-                        <Link to={path}>
+                        <button
+                          type="button"
+                          className={cn([
+                            'flex w-full items-center py-4',
+                            !isPhone ? 'py-4' : 'py-6',
+                          ])}
+                        >
                           <span
                             className={cn([
                               isOpen === false ? '' : 'mr-4',
@@ -124,8 +130,8 @@ const Menu = ({ isOpen }: { isOpen: boolean }) => {
                             <Icon className="h-5 w-5" />
                           </span>
                           <span className={styles['item-title']}>{title}</span>
-                        </Link>
-                      </Button>
+                        </button>
+                      </div>
                     </TooltipTrigger>
                     {isOpen === false && (
                       <TooltipContent side="right">{title}</TooltipContent>

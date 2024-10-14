@@ -1,7 +1,7 @@
 :global(:root) {
   --sidebar-width: 250px;
   --sidebar-collapse-width: 50px;
-  --sidebar-transition-duration: 500;
+  --sidebar-transition-duration: 0.5s;
 }
 
 .root {
@@ -134,7 +134,7 @@
 
   & .active,
   & .expand {
-    background: var(--color-primary-default);
+    background: var(--color-primary);
     border-radius: 24px 0 0 24px;
   }
 

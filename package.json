@@ -79,6 +79,7 @@
     "tailwind-merge": "^2.5.3",
     "tailwindcss": "^3.4.13",
     "tailwindcss-animate": "^1.0.7",
+    "tinycolor2": "1.6.0",
     "umi-request": "^1.4.0",
     "zod": "3.23.8"
   },
