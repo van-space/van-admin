@@ -27,7 +27,8 @@
       "recommended": true,
       "a11y": {
         "noBlankTarget": "warn",
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "useKeyWithClickEvents": "off"
       },
       "complexity": {
         "noBannedTypes": "off",

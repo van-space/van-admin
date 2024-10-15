@@ -1,9 +1,11 @@
+import { LogOut } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 // import { useDispatch } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import type { MenuModel } from '~/utils/build-menus'
 
 import { ModeToggle } from '~/components/mode-toggle'
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import {
   Tooltip,
   TooltipContent,
@@ -11,11 +13,15 @@ import {
   TooltipTrigger,
 } from '~/components/ui/tooltip'
 import { configs } from '~/configs'
+import { WEB_URL } from '~/constants/env'
 import { rootRoutes } from '~/router/route'
 import { useSelector } from '~/store/hooks'
 // import { useSelector } from '~/store/hooks'
 import { cn } from '~/utils'
+import { removeToken } from '~/utils/auth'
+import { signOut } from '~/utils/authjs'
 import { buildMenus } from '~/utils/build-menus'
+import { RESTManager } from '~/utils/rest'
 
 import { ScrollArea } from '../ui/scroll-area'
 import { useSidebarStatusInjection } from './hooks'
@@ -36,7 +42,7 @@ const Sidebar = ({
 
   const { SidebarCollapseStatusContext, onTransitionEnd, status } =
     useSidebarStatusInjection(collapse)
-
+  const user = useSelector((state) => state.user)
   return (
     <SidebarCollapseStatusContext.Provider
       value={{
@@ -78,6 +84,19 @@ const Sidebar = ({
             />
           </div>
           <Menu isOpen={!collapse} />
+          <button
+            type="button"
+            className={styles['sidebar-footer']}
+            onClick={() => {
+              window.open(WEB_URL)
+            }}
+          >
+            <LogoutAvatarButton avatar={user.user?.avatar} />
+
+            <span className={styles['sidebar-username']}>
+              {user.user?.name}
+            </span>
+          </button>
         </div>
       </aside>
     </SidebarCollapseStatusContext.Provider>
@@ -94,7 +113,7 @@ const Menu = ({ isOpen }: { isOpen: boolean }) => {
   const isPhone = useMemo(() => viewport.mobile, [viewport.mobile])
   return (
     <ScrollArea className={styles.menu}>
-      <nav className="mt-8 h-full w-full">
+      <nav className="h-full w-full">
         <ul className={styles.items}>
           {menus.map(({ title, icon: Icon, path }) => {
             // const active = pathname === path || pathname.startsWith(path)
@@ -127,7 +146,7 @@ const Menu = ({ isOpen }: { isOpen: boolean }) => {
                               !isOpen ? 'basis-[var(--w)]' : '',
                             ])}
                           >
-                            <Icon className="h-5 w-5" />
+                            <Icon className="h-4 w-4" />
                           </span>
                           <span className={styles['item-title']}>{title}</span>
                         </button>
@@ -147,4 +166,26 @@ const Menu = ({ isOpen }: { isOpen: boolean }) => {
   )
 }
 
+const LogoutAvatarButton = ({ avatar }: { avatar?: string }) => {
+  const navigate = useNavigate()
+  const handleLogout = async (e: any) => {
+    e.stopPropagation()
+    await RESTManager.api.user.logout.post({})
+    removeToken()
+    await signOut()
+    navigate('/login')
+    console.log('logout')
+  }
+  return (
+    <div className="relative h-[35px] w-[35px]" onClick={handleLogout}>
+      <Avatar className="h-50 w-50 absolute inset-0 z-1">
+        <AvatarImage src={avatar} />
+        <AvatarFallback>VAN</AvatarFallback>
+      </Avatar>
+      <div className="bg-dark-200 absolute inset-0 z-10 flex items-center justify-center rounded-full bg-opacity-80 text-xl opacity-0 transition-opacity hover:opacity-50">
+        <LogOut />
+      </div>
+    </div>
+  )
+}
 export default Sidebar

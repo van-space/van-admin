@@ -120,7 +120,7 @@
 
     @apply flex flex-col;
     @apply bg-gray-100;
-    @apply fixed left-0 top-0 z-10;
+    @apply fixed left-0 top-0 z-10 overflow-hidden text-white;
 
     height: 100vh;
     height: -webkit-fill-available;
