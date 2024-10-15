@@ -19,11 +19,6 @@ const AppLayout = () => {
     })
   }, [dispatch, navigate])
 
-  return (
-    <div>
-      <SidebarLayout />
-      {/* <Outlet /> */}
-    </div>
-  )
+  return <SidebarLayout />
 }
 export default AppLayout

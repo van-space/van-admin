@@ -58,8 +58,6 @@ import Log from '@ricons/tabler/es/News'
 import Pencil from '@ricons/tabler/es/Pencil'
 import Settings from '@ricons/tabler/es/Settings'
 
-import { cn } from '~/utils'
-
 export { Lock as LockIcon }
 export { Pen as PenIcon }
 export {
@@ -610,7 +608,7 @@ export function MingcuteUserStarFill() {
     </svg>
   )
 }
-export const LoadingSpinner = ({ className }) => {
+export const LoadingSpinner = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -622,9 +620,16 @@ export const LoadingSpinner = ({ className }) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={cn('animate-spin', className)}
+      className="lucide lucide-loader animate-spin"
     >
-      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+      <path d="M12 2v4" />
+      <path d="m16.2 7.8 2.9-2.9" />
+      <path d="M18 12h4" />
+      <path d="m16.2 16.2 2.9 2.9" />
+      <path d="M12 18v4" />
+      <path d="m4.9 19.1 2.9-2.9" />
+      <path d="M2 12h4" />
+      <path d="m4.9 4.9 2.9 2.9" />
     </svg>
   )
 }

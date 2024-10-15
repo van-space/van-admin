@@ -5,6 +5,9 @@ import type { RouteObject } from './interface'
 import { TachometerAltIcon } from '~/components/ui/icons'
 import AppLayout from '~/layouts/app-layout'
 import SetupLayout from '~/layouts/setup-view'
+import Login from '~/pages/login'
+import Setup from '~/pages/setup'
+import SetupApi from '~/pages/setup-api'
 
 import { RouteName } from './name'
 import lazyLoad from './utils/LazyLoad'
@@ -38,7 +41,7 @@ export const rootRoutes: RouteObject[] = [
       {
         path: '/login',
         name: RouteName.Login,
-        element: lazyLoad(lazy(() => import('~/pages/login'))),
+        element: <Login />,
         meta: {
           requiresAuth: false,
           title: '登录',
@@ -48,7 +51,7 @@ export const rootRoutes: RouteObject[] = [
       {
         path: '/setup',
         name: RouteName.Setup,
-        element: lazyLoad(lazy(() => import('~/pages/setup'))),
+        element: <Setup />,
         meta: {
           requiresAuth: false,
           title: '初始化',
@@ -57,7 +60,7 @@ export const rootRoutes: RouteObject[] = [
       },
       {
         path: '/setup-api',
-        element: lazyLoad(lazy(() => import('~/pages/setup-api'))),
+        element: <SetupApi />,
         meta: {
           requiresAuth: false,
           title: '初始化 API',

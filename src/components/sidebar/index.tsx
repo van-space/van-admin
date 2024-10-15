@@ -174,7 +174,6 @@ const LogoutAvatarButton = ({ avatar }: { avatar?: string }) => {
     removeToken()
     await signOut()
     navigate('/login')
-    console.log('logout')
   }
   return (
     <div className="relative h-[35px] w-[35px]" onClick={handleLogout}>

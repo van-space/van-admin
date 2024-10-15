@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { useKeyPress } from 'ahooks'
+import type { CSSProperties } from 'react'
 
 import { KBarWrapper } from '~/components/k-bar'
 import Sidebar from '~/components/sidebar'
@@ -41,7 +42,7 @@ export const SidebarLayout = () => {
   return (
     <KBarWrapper>
       <div className={styles.root}>
-        {isInApiDebugMode ? (
+        {isInApiDebugMode && (
           <div
             className={cn([
               'bg-dark-800 z-2 fixed left-0 right-0 top-0 flex h-[40px] items-center whitespace-pre text-gray-400 transition-all duration-500',
@@ -56,15 +57,26 @@ export const SidebarLayout = () => {
             {RESTManager.endpoint}, Gateway: {GATEWAY_URL}
             {window.injectData.PAGE_PROXY && ', Dashboard is in local dev mode'}
           </div>
-        ) : (
-          <Sidebar
-            collapse={collapse}
-            width={sidebarWidth}
-            onCollapseChange={(s: boolean) => {
-              dispatch(uiSlice.actions.toggleSidebar(!!s))
-            }}
-          />
         )}
+        <Sidebar
+          collapse={collapse}
+          width={sidebarWidth}
+          onCollapseChange={(s: boolean) => {
+            dispatch(uiSlice.actions.toggleSidebar(!!s))
+          }}
+        />
+        <main
+          className={styles.content}
+          style={
+            {
+              left: !collapse ? `${sidebarWidth}px` : '50px',
+              pointerEvents: isLaptop && !collapse ? 'none' : 'auto',
+              top: isInApiDebugMode && '40px',
+            } as CSSProperties
+          }
+        >
+          <Outlet />
+        </main>
       </div>
     </KBarWrapper>
   )
