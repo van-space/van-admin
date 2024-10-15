@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { fetchUser } from '~/store/slice/user.slice'
 
@@ -22,7 +22,7 @@ const AppLayout = () => {
   return (
     <div>
       <SidebarLayout />
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   )
 }

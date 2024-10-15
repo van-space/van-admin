@@ -2,7 +2,6 @@ import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { Button } from '~/components/ui/button'
 import {
   Tooltip,
   TooltipContent,
@@ -12,7 +11,7 @@ import {
 import { useTheme } from '~/providers/theme-provider'
 import { uiSlice } from '~/store/slice/ui.slice'
 
-export function ModeToggle() {
+export function ModeToggle({ className }: { className?: string }) {
   const { setTheme, theme } = useTheme()
   const dispatch = useDispatch()
   useEffect(() => {
@@ -22,17 +21,16 @@ export function ModeToggle() {
     <TooltipProvider disableHoverableContent>
       <Tooltip delayDuration={100}>
         <TooltipTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            className="mr-2 h-8 w-8 rounded-full bg-background"
+          <button
+            type="button"
+            className={className}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-transform duration-500 ease-in-out dark:rotate-0 dark:scale-100" />
-            <MoonIcon className="scale-1000 absolute h-[1.2rem] w-[1.2rem] rotate-0 transition-transform duration-500 ease-in-out dark:-rotate-90 dark:scale-0" />
-          </Button>
+            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 text-white transition-transform duration-500 ease-in-out dark:rotate-0 dark:scale-100" />
+            <MoonIcon className="scale-1000 absolute h-[1.2rem] w-[1.2rem] rotate-0 text-white transition-transform duration-500 ease-in-out dark:-rotate-90 dark:scale-0" />
+          </button>
         </TooltipTrigger>
-        <TooltipContent side="bottom">Switch Theme</TooltipContent>
+        <TooltipContent side="bottom">切换主题</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   )

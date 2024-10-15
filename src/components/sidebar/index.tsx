@@ -57,8 +57,7 @@ const Sidebar = ({
         <div className={styles.sidebar}>
           <div className="relative h-20 flex-shrink-0 text-center text-2xl font-medium">
             <div className={styles['toggle-color-btn']}>
-              {status}
-              <ModeToggle />
+              <ModeToggle className={styles['toggle-color-btn']} />
             </div>
             <h1 className={styles['header-title']}>
               {status === 'expanded' && (
@@ -73,6 +72,7 @@ const Sidebar = ({
               <span className={'sr-only'}>{title}</span>
             </h1>
             <SidebarToggle
+              className={styles['collapse-button']}
               isOpen={!collapse}
               setIsOpen={() => onCollapseChange(!collapse)}
             />

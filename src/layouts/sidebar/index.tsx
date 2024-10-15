@@ -25,7 +25,6 @@ export const SidebarLayout = () => {
   })
   const dispatch = useDispatch()
   const collapse = useSelector((state) => state.ui.sidebarCollapse)
-  console.log('🚀 ~ SidebarLayout ~ collapse:', collapse)
   const viewport = useSelector((state) => state.ui.viewport)
   const sidebarWidth = useSelector((state) => state.ui.sidebarWidth)
   useKeyPress('uparrow', () => {

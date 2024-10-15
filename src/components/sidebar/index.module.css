@@ -1,7 +1,7 @@
 :global(:root) {
   --sidebar-width: 250px;
   --sidebar-collapse-width: 50px;
-  --sidebar-transition-duration: 0.5s;
+  --sidebar-transition-duration: 0.3s;
 }
 
 .root {
@@ -79,7 +79,7 @@
 }
 
 .collapse-button {
-  @apply absolute bottom-0 right-8 top-0 text-base;
+  @apply absolute bottom-0 right-8 top-0 text-base text-white;
 
   transition: right 0.5s;
 
@@ -91,7 +91,7 @@
 }
 
 .toggle-color-btn {
-  @apply absolute bottom-0 left-8 top-0 flex items-center text-base;
+  @apply absolute bottom-0 left-4 top-0 flex items-center text-base;
 
   transition:
     left 0.5s,
