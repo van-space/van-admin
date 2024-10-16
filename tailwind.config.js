@@ -102,11 +102,10 @@ module.exports = {
       },
     },
   },
-  darkMode: ['class', '[data-theme="dark"]'],
+  darkMode: 'class',
   plugins: [animate, daisyui],
   daisyui: {
     logs: false,
-    darkTheme: 'dark',
     base: false,
   },
 }
