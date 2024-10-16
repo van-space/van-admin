@@ -52,8 +52,8 @@ class RESTManagerStatic {
           }
 
           if (error?.response?.status === 401) {
-            window.location.pathname = `/login?from=${encodeURIComponent(
-              window.location.pathname,
+            window.location.hash = `/login?from=${encodeURIComponent(
+              window.location.hash,
             )}`
           }
           return Promise.reject(error)

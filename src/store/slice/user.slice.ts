@@ -30,7 +30,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
     return result
   } catch (error: any) {
     if (error.data?.message === '没有完成初始化！') {
-      window.location.pathname = '/setup'
+      window.location.hash = '/setup'
     }
   }
 })

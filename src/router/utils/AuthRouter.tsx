@@ -64,9 +64,12 @@ const AuthRouter = ({ children }: PropsWithChildren) => {
         const params = new URLSearchParams()
         params.set('from', pathname)
         navigate(`/login?${params.toString()}`, { replace: true })
+        return
       }
       lastCheckedLogAt.current = now
-      // TODO 这里初始化ws
+      import('~/socket').then((mo) => {
+        mo.socket.initIO()
+      })
 
       const sessionWithLogin = sessionStorage.getItem(SESSION_WITH_LOGIN)
 
@@ -80,8 +83,9 @@ const AuthRouter = ({ children }: PropsWithChildren) => {
           loginWithTokenOnce.current = true
           removeToken()
           setToken(res.token)
-
-          // TODO 这里初始化ws
+          import('~/socket').then((mo) => {
+            mo.socket.initIO()
+          })
         })
         .catch(() => {
           console.log('登陆失败')

@@ -1,7 +1,9 @@
+import type { toast } from 'react-hot-toast'
+
 declare global {
   export interface Window {
-    notification: ReturnType<typeof useNotification>
-    dialog: ReturnType<typeof useDialog>
+    message: typeof toast
+    toast: typeof toast
     injectData: {
       BASE_API: null | string
       WEB_URL: null | string
@@ -13,7 +15,6 @@ declare global {
     }
     [K: string]: any
   }
+  export const __DEV__: boolean
   export type KV = Record<string, any>
 }
-
-export {}

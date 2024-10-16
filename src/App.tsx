@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useEffect } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
 import { Provider as ReactReduxProvider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import { rootStore } from './store'
 
@@ -20,10 +20,11 @@ const queryClient = new QueryClient()
 export default function App() {
   useEffect(() => {
     window.message = toast
+    window.toast = toast
   }, [])
   return (
-    <ThemeProvider defaultTheme="light" storageKey="van-ui-theme">
-      <BrowserRouter>
+    <HashRouter>
+      <ThemeProvider defaultTheme="light" storageKey="van-ui-theme">
         <ReactReduxProvider store={rootStore}>
           <LayoutProvider>
             <QueryClientProvider client={queryClient}>
@@ -35,7 +36,7 @@ export default function App() {
             </QueryClientProvider>
           </LayoutProvider>
         </ReactReduxProvider>
-      </BrowserRouter>
-    </ThemeProvider>
+      </ThemeProvider>
+    </HashRouter>
   )
 }

@@ -20,7 +20,7 @@ export const checkIsInit = async (): Promise<boolean> => {
           })
           .then((res) => {
             if (typeof res !== 'object' || (res && !('isInit' in res))) {
-              window.location.pathname = '/setup'
+              window.location.hash = '/setup'
               toast.error('api error')
             }
             return res

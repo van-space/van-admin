@@ -13,7 +13,10 @@ export default defineConfig({
   },
   source: {
     alias: {},
-    define: publicVars,
+    define: {
+      ...publicVars,
+      __DEV__: isDev,
+    },
   },
   html: {
     template: 'public/index.html',
