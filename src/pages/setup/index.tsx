@@ -19,8 +19,8 @@ import {
   FormLabel,
   FormMessage,
 } from '~/components/ui/form'
-import { LoadingSpinner } from '~/components/ui/icons'
 import { Input } from '~/components/ui/input'
+import { Loading } from '~/components/ui/loading'
 import { Separator } from '~/components/ui/separator'
 import { getToken, removeToken } from '~/utils/auth'
 import { showConfetti } from '~/utils/confetti'
@@ -120,7 +120,7 @@ const Setup = () => {
           {JSON.stringify(defaultConfigs) === '{}' ? (
             <div className="py-4 text-center">
               <span>
-                <LoadingSpinner className="w-10" />
+                <Loading />
               </span>
             </div>
           ) : (

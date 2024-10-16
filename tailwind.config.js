@@ -2,6 +2,7 @@
  * @format
  * @type {import('tailwindcss').Config}
  */
+import daisyui from 'daisyui'
 import animate from 'tailwindcss-animate'
 
 module.exports = {
@@ -101,6 +102,11 @@ module.exports = {
       },
     },
   },
-  darkMode: 'class',
-  plugins: [animate],
+  darkMode: ['class', '[data-theme="dark"]'],
+  plugins: [animate, daisyui],
+  daisyui: {
+    logs: false,
+    darkTheme: 'dark',
+    base: false,
+  },
 }

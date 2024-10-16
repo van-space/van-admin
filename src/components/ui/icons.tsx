@@ -166,18 +166,18 @@ export const CodeIcon = () => (
 )
 export const RefreshIcon = () => (
   <svg width="1em" height="1em" viewBox="0 0 24 24">
-    <g stroke-width="1.5" fill="none">
+    <g strokeWidth="1.5" fill="none">
       <path
         d="M21.888 13.5C21.164 18.311 17.013 22 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2c4.1 0 7.625 2.468 9.168 6"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M17 8h4.4a.6.6 0 0 0 .6-.6V3"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </g>
   </svg>
@@ -220,9 +220,9 @@ export const TerminalIcon = () => (
     <g
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path d="M4 17l6-6l-6-6" />
       <path d="M12 19h8" />
@@ -244,9 +244,9 @@ export const FunctionIcon = () => (
     <g
       fill="none"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
     >
       <path d="M14 10h1c1 0 1 1 2.016 3.527C18 16 18 17 19 17h1" />
       <path d="M13 17c1.5 0 3-2 4-3.5s2.5-3.5 4-3.5M3 19c0 1.5.5 2 2 2s2-4 3-9s1.5-9 3-9s2 .5 2 2m-8 7h6" />
@@ -494,8 +494,8 @@ export const NotebookMinimalistic = () => {
         />
         <path
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-width="1.5"
+          strokeLinecap="round"
+          strokeWidth="1.5"
           d="M12 5.5v15"
         />
       </g>
@@ -513,9 +513,9 @@ export const DatabaseBackupIcon = () => (
     <g
       fill="none"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
     >
       <ellipse cx="12" cy="5" rx="9" ry="3" />
       <path d="M3 12a9 3 0 0 0 5 2.69M21 9.3V5" />
@@ -605,31 +605,6 @@ export function MingcuteUserStarFill() {
           d="M11 2a5 5 0 1 0 0 10a5 5 0 0 0 0-10Zm0 11c-2.395 0-4.575.694-6.178 1.671c-.8.49-1.484 1.065-1.978 1.69C2.358 16.977 2 17.713 2 18.5c0 .845.411 1.511 1.003 1.986c.56.45 1.299.748 2.084.956C6.665 21.859 8.771 22 11 22c.23 0 .46-.002.685-.005a1 1 0 0 0 .89-1.428A5.973 5.973 0 0 1 12 18c0-1.252.383-2.412 1.037-3.373a1 1 0 0 0-.72-1.557c-.43-.046-.87-.07-1.317-.07Zm7.864.997a1 1 0 0 0-1.728 0l-.91 1.562l-1.766.382a1 1 0 0 0-.534 1.644l1.204 1.348l-.182 1.798a1 1 0 0 0 1.398 1.016l1.654-.73l1.654.73a1 1 0 0 0 1.398-1.016l-.182-1.799l1.204-1.347a1 1 0 0 0-.534-1.644l-1.766-.382l-.91-1.562Z"
         />
       </g>
-    </svg>
-  )
-}
-export const LoadingSpinner = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="lucide lucide-loader animate-spin"
-    >
-      <path d="M12 2v4" />
-      <path d="m16.2 7.8 2.9-2.9" />
-      <path d="M18 12h4" />
-      <path d="m16.2 16.2 2.9 2.9" />
-      <path d="M12 18v4" />
-      <path d="m4.9 19.1 2.9-2.9" />
-      <path d="M2 12h4" />
-      <path d="m4.9 4.9 2.9 2.9" />
     </svg>
   )
 }

@@ -18,7 +18,7 @@ const SetupLayout = () => {
     }
   })
   return (
-    <div>
+    <>
       <div
         className={cn([
           'fixed bottom-0 left-0 right-0 top-0 -z-1',
@@ -27,7 +27,7 @@ const SetupLayout = () => {
         style={{ backgroundImage: `url(${bgUrl})`, opacity: loaded ? 1 : 0.4 }}
       />
       <Outlet />
-    </div>
+    </>
   )
 }
 

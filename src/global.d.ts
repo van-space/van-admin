@@ -17,4 +17,9 @@ declare global {
   }
   export const __DEV__: boolean
   export type KV = Record<string, any>
+  export type ComponentType<P = {}> = {
+    className?: string
+  } & PropsWithChildren &
+    P
+  export type Component<P = object> = FC<ComponentType & P>
 }

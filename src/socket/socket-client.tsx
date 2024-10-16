@@ -26,7 +26,6 @@ const Notify = {
     return window.message
   },
 }
-
 export class SocketClient {
   #_socket!: ReturnType<typeof io>
 

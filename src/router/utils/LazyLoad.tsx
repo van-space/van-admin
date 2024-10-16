@@ -2,7 +2,7 @@ import { Suspense, useEffect } from 'react'
 import QProgress from 'qier-progress'
 import type React from 'react'
 
-import { LoadingSpinner } from '~/components/ui/icons'
+import { Loading } from '~/components/ui/loading'
 
 export const progress = new QProgress({ colorful: false, color: '#1a9cf3' })
 
@@ -26,8 +26,8 @@ const Progress = () => {
     }
   })
   return (
-    <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-primary-default">
-      <LoadingSpinner />
+    <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+      <Loading useDefaultLoadingText />
     </div>
   )
 }
