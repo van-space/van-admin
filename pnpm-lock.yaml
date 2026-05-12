@@ -79,7 +79,7 @@ importers:
         version: 0.12.0
       '@vicons/utils':
         specifier: 0.1.4
-        version: 0.1.4(vue@3.5.6(typescript@5.6.2))
+        version: 0.1.4(vue@3.5.6(typescript@5.9.3))
       canvas-confetti:
         specifier: 1.9.3
         version: 1.9.3
@@ -91,7 +91,7 @@ importers:
         version: 2.1.1
       emblor:
         specifier: 1.4.6
-        version: 1.4.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
+        version: 1.4.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
@@ -170,7 +170,7 @@ importers:
         version: 1.0.3(@rsbuild/core@1.0.8)
       '@rsbuild/plugin-svgr':
         specifier: 1.0.2
-        version: 1.0.2(@rsbuild/core@1.0.8)(typescript@5.6.2)
+        version: 1.0.2(@rsbuild/core@1.0.8)(typescript@5.9.3)
       '@rsdoctor/rspack-plugin':
         specifier: ^0.4.5
         version: 0.4.5(@rspack/core@1.0.7(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.17.19))
@@ -214,8 +214,8 @@ importers:
         specifier: ^2.11.1
         version: 2.11.1
       typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+        specifier: ^5.9.3
+        version: 5.9.3
 
 packages:
 
@@ -1610,6 +1610,7 @@ packages:
 
   '@simplewebauthn/types@10.0.0':
     resolution: {integrity: sha512-SFXke7xkgPRowY2E+8djKbdEznTVnD5R6GO7GPTthpHrokLvNKw8C3lFZypTxLI7KkCfGPfhtqB3d7OVGGa9jQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
@@ -1901,6 +1902,7 @@ packages:
 
   acorn-import-assertions@1.9.0:
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -2121,6 +2123,9 @@ packages:
 
   class-variance-authority@0.7.0:
     resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+
+  class-variance-authority@0.7.1:
+    resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
 
   clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
@@ -2915,6 +2920,7 @@ packages:
 
   mvdan-sh@0.10.1:
     resolution: {integrity: sha512-kMbrH0EObaKmK3nVRKUIIya1dpASHIEusM13S4V1ViHFuxuNxCo+arxoa6j/dbV22YBGjl7UKJm9QQKJ2Crzhg==}
+    deprecated: See https://github.com/mvdan/sh/issues/1145
 
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
@@ -3678,6 +3684,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   stackframe@1.3.4:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
@@ -3741,6 +3748,9 @@ packages:
 
   tailwind-merge@2.5.2:
     resolution: {integrity: sha512-kjEBm+pvD+6eAwzJL2Bi+02/9LFLal1Gs61+QB7HvTfQQ0aXwC5LGT8PEt1gS0CWKktKe6ysPTAy3cBC5MeiIg==}
+
+  tailwind-merge@3.6.0:
+    resolution: {integrity: sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w==}
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -3843,8 +3853,8 @@ packages:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
 
-  typescript@5.6.2:
-    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -5284,13 +5294,13 @@ snapshots:
       '@rspack/plugin-react-refresh': 1.0.0(react-refresh@0.14.2)
       react-refresh: 0.14.2
 
-  '@rsbuild/plugin-svgr@1.0.2(@rsbuild/core@1.0.8)(typescript@5.6.2)':
+  '@rsbuild/plugin-svgr@1.0.2(@rsbuild/core@1.0.8)(typescript@5.9.3)':
     dependencies:
       '@rsbuild/core': 1.0.8
       '@rsbuild/plugin-react': 1.0.2(@rsbuild/core@1.0.8)
-      '@svgr/core': 8.1.0(typescript@5.6.2)
-      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))
-      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))(typescript@5.6.2)
+      '@svgr/core': 8.1.0(typescript@5.9.3)
+      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))
+      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))(typescript@5.9.3)
       deepmerge: 4.3.1
       loader-utils: 2.0.4
     transitivePeerDependencies:
@@ -5524,12 +5534,12 @@ snapshots:
       '@svgr/babel-plugin-transform-react-native-svg': 8.1.0(@babel/core@7.25.2)
       '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.25.2)
 
-  '@svgr/core@8.1.0(typescript@5.6.2)':
+  '@svgr/core@8.1.0(typescript@5.9.3)':
     dependencies:
       '@babel/core': 7.25.2
       '@svgr/babel-preset': 8.1.0(@babel/core@7.25.2)
       camelcase: 6.3.0
-      cosmiconfig: 8.3.6(typescript@5.6.2)
+      cosmiconfig: 8.3.6(typescript@5.9.3)
       snake-case: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -5540,20 +5550,20 @@ snapshots:
       '@babel/types': 7.25.6
       entities: 4.5.0
 
-  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.6.2))':
+  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.9.3))':
     dependencies:
       '@babel/core': 7.25.2
       '@svgr/babel-preset': 8.1.0(@babel/core@7.25.2)
-      '@svgr/core': 8.1.0(typescript@5.6.2)
+      '@svgr/core': 8.1.0(typescript@5.9.3)
       '@svgr/hast-util-to-babel-ast': 8.0.0
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
 
-  '@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0(typescript@5.6.2))(typescript@5.6.2)':
+  '@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
-      '@svgr/core': 8.1.0(typescript@5.6.2)
-      cosmiconfig: 8.3.6(typescript@5.6.2)
+      '@svgr/core': 8.1.0(typescript@5.9.3)
+      cosmiconfig: 8.3.6(typescript@5.9.3)
       deepmerge: 4.3.1
       svgo: 3.3.2
     transitivePeerDependencies:
@@ -5664,10 +5674,10 @@ snapshots:
 
   '@vicons/tabler@0.12.0': {}
 
-  '@vicons/utils@0.1.4(vue@3.5.6(typescript@5.6.2))':
+  '@vicons/utils@0.1.4(vue@3.5.6(typescript@5.9.3))':
     dependencies:
       '@xicons/utils': 0.1.4
-      vue: 3.5.6(typescript@5.6.2)
+      vue: 3.5.6(typescript@5.9.3)
 
   '@vue/compiler-core@3.5.6':
     dependencies:
@@ -5715,11 +5725,11 @@ snapshots:
       '@vue/shared': 3.5.6
       csstype: 3.1.3
 
-  '@vue/server-renderer@3.5.6(vue@3.5.6(typescript@5.6.2))':
+  '@vue/server-renderer@3.5.6(vue@3.5.6(typescript@5.9.3))':
     dependencies:
       '@vue/compiler-ssr': 3.5.6
       '@vue/shared': 3.5.6
-      vue: 3.5.6(typescript@5.6.2)
+      vue: 3.5.6(typescript@5.9.3)
 
   '@vue/shared@3.5.6': {}
 
@@ -6022,6 +6032,10 @@ snapshots:
     dependencies:
       clsx: 2.0.0
 
+  class-variance-authority@0.7.1:
+    dependencies:
+      clsx: 2.1.1
+
   clsx@2.0.0: {}
 
   clsx@2.1.1: {}
@@ -6090,14 +6104,14 @@ snapshots:
       path-type: 4.0.0
       yaml: 1.10.2
 
-  cosmiconfig@8.3.6(typescript@5.6.2):
+  cosmiconfig@8.3.6(typescript@5.9.3):
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.9.3
 
   cross-env@7.0.3:
     dependencies:
@@ -6240,19 +6254,19 @@ snapshots:
 
   electron-to-chromium@1.5.22: {}
 
-  emblor@1.4.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2):
+  emblor@1.4.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(postcss@8.4.47)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3):
     dependencies:
       '@radix-ui/react-dialog': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-popover': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot': 1.1.0(@types/react@18.3.10)(react@18.3.1)
-      class-variance-authority: 0.7.0
+      class-variance-authority: 0.7.1
       clsx: 2.1.1
       cmdk: 0.2.1(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-easy-sort: 1.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      tailwind-merge: 2.5.2
-      tsup: 6.7.0(postcss@8.4.47)(typescript@5.6.2)
+      tailwind-merge: 3.6.0
+      tsup: 6.7.0(postcss@8.4.47)(typescript@5.9.3)
     transitivePeerDependencies:
       - '@swc/core'
       - '@types/react'
@@ -7589,6 +7603,8 @@ snapshots:
 
   tailwind-merge@2.5.2: {}
 
+  tailwind-merge@3.6.0: {}
+
   tailwindcss-animate@1.0.7(tailwindcss@3.4.13):
     dependencies:
       tailwindcss: 3.4.13
@@ -7672,7 +7688,7 @@ snapshots:
 
   tslib@2.7.0: {}
 
-  tsup@6.7.0(postcss@8.4.47)(typescript@5.6.2):
+  tsup@6.7.0(postcss@8.4.47)(typescript@5.9.3):
     dependencies:
       bundle-require: 4.2.1(esbuild@0.17.19)
       cac: 6.7.14
@@ -7690,7 +7706,7 @@ snapshots:
       tree-kill: 1.2.2
     optionalDependencies:
       postcss: 8.4.47
-      typescript: 5.6.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -7702,7 +7718,7 @@ snapshots:
       media-typer: 0.3.0
       mime-types: 2.1.35
 
-  typescript@5.6.2: {}
+  typescript@5.9.3: {}
 
   ufo@1.5.4: {}
 
@@ -7752,15 +7768,15 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vue@3.5.6(typescript@5.6.2):
+  vue@3.5.6(typescript@5.9.3):
     dependencies:
       '@vue/compiler-dom': 3.5.6
       '@vue/compiler-sfc': 3.5.6
       '@vue/runtime-dom': 3.5.6
-      '@vue/server-renderer': 3.5.6(vue@3.5.6(typescript@5.6.2))
+      '@vue/server-renderer': 3.5.6(vue@3.5.6(typescript@5.9.3))
       '@vue/shared': 3.5.6
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.9.3
 
   watchpack@2.4.2:
     dependencies:
